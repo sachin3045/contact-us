@@ -2,7 +2,7 @@ from flask import Flask, render_template,request, flash, session , redirect , ur
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField,IntegerField,TextAreaField
-from wtforms.validators import DataRequired 
+from wtforms.validators import DataRequired,Email 
 from flask_mail import Mail,Message
 from flask_sqlalchemy import SQLAlchemy
 from threading import Thread
@@ -52,7 +52,7 @@ class User(db.Model):
         
 class myform(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(),Email()])
     sub = StringField('Subject', validators=[DataRequired()])
     message = TextAreaField('Message', validators=[DataRequired()])
     submit = SubmitField('Submit')
