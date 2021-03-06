@@ -32,13 +32,13 @@ def send_mail_async(app,msg):
     with app.app_context():
         mail.send(msg)
 
-def send_mail(subject,come,template,**kwargs):
-    msg = Message(app.config['MAIL_SUBJECT_PREFIX'] + subject, sender = app.config['MAIL_SENDER'] , recipients = [come] )
+def send_mail(subject,recv,template,**kwargs):
+    msg = Message(app.config['MAIL_SUBJECT_PREFIX'] + subject, sender = app.config['MAIL_SENDER'] , recipients = [recv] )
     msg.body = render_template (template + '.txt',**kwargs)
     msg.html = render_template (template + '.html',**kwargs)
-    thr = Thread(target=send_mail_async,args=[app,msg])
-    thr.start()
-    return thr
+    thrd = Thread(target=send_mail_async,args=[app,msg])
+    thrd.start()
+    return thrd
 
 class User(db.Model):
     __tablename__ = 'Users'
