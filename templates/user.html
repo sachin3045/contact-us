@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+{% block title %}
+My website
+{% endblock %}
+{% block content %}
+<h1>Hello {{ my['sach'] }}</h1>
+<ul>
+  {{ macros.render_list(my['list']) }}
+</ul>
+{% endblock %}

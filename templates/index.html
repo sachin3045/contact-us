@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}My Form{% endblock %}
+{% block style %}
+body{
+    background:url('static/bg.jpg') no-repeat center center/cover;
+    color:white;
+}
+.nm{
+    display: flex; flex-direction: column;  width: 100%; height:100%; align-items: center; justify-content: center;
+}
+.items{
+    display:flex;
+    flex-direction:column;
+    font-size:16px;
+    font-family:Verdana;
+    text-align:center;
+    margin:10px;
+    font-weight:bold;
+}
+h1{
+    font-size:50px;
+    font-weight:bolder;
+    text-align:center;
+}
+.btn{
+border-radius:9px;
+padding:5px;
+margin:7px;
+height:35px;
+font-size:15px;
+}
+#frm{
+    width:350px;
+}
+.sbmt{
+    width:90px;
+    height:35px;
+    font-size:15px;
+    font-family:Verdana;
+    text-align:center;
+    display:block;
+    border-radius:8px;
+    margin:auto;
+}
+{% endblock %}
+{% block page_content %}
+<div class="nm">
+<form method="POST" id ="frm">
+    {{ form.hidden_tag() }}
+    <h1>Contact Us</h1>
+    <div class="items">
+    {{ form.name.label }}{{ form.name(class_="btn")}}
+    </div>
+    <div class="items">
+    {{ form.email.label }}{{ form.email(class_="btn") }}
+</div>
+<div class="items">
+    {{ form.sub.label }}{{ form.sub(class_="btn") }}
+</div>
+<div class="items">
+    {{ form.message.label }}{{ form.message(class_="btn") }}
+</div>
+<div class="items">
+    {{ form.submit(class_="sbmt") }}
+</div>
+</form>
+</div>
+{% endblock %}
